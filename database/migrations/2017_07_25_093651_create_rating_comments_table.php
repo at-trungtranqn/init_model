@@ -20,7 +20,7 @@ class CreateRatingCommentsTable extends Migration
             $table->integer('comfort');
             $table->integer('location');
             $table->integer('service');
-            $table->string('comment')->nullable();
+            $table->text('comment')->nullable();
             $table->float('total_rating');
             $table->integer('hotel_id')->unsigned();
             $table->integer('user_id')->unsigned();
@@ -28,11 +28,11 @@ class CreateRatingCommentsTable extends Migration
         });
         Schema::table('rating_comments', function(Blueprint $table) {
             $table->foreign('hotel_id')->references('id')->on('hotels')
-                    ->onDelete('restrict')
-                    ->onUpdate('restrict');
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
             $table->foreign('user_id')->references('id')->on('users')
-                    ->onDelete('restrict')
-                    ->onUpdate('restrict');
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 
